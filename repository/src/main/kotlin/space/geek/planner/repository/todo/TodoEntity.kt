@@ -3,6 +3,8 @@ package space.geek.planner.repository.todo
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
+import space.geek.planner.domain.todo.Todo
+import space.geek.planner.domain.todo.TodoCreationCommand
 import space.geek.planner.domain.todo.TodoStatus
 import java.time.LocalDateTime
 import javax.persistence.Entity
@@ -27,9 +29,35 @@ data class TodoEntity(
     val status: TodoStatus,
     val userId: Long,
     val startTime: LocalDateTime,
-    val finishTime: LocalDateTime,
+    val finishTime: LocalDateTime?,
     @CreationTimestamp
     val createdAt: LocalDateTime? = null,
     @UpdateTimestamp
     val updatedAt: LocalDateTime? = null
-)
+) {
+
+    fun to(): Todo =
+        Todo(
+            id = id!!,
+            name = name,
+            priority = priority,
+            status = status,
+            userId = userId,
+            startTime = startTime,
+            finishTime = finishTime
+        )
+
+    companion object {
+        fun from(command: TodoCreationCommand): TodoEntity =
+            with(command) {
+                TodoEntity(
+                    name = name,
+                    priority = priority,
+                    status = status,
+                    userId = userId,
+                    startTime = startTime,
+                    finishTime = finishTime
+                )
+            }
+    }
+}

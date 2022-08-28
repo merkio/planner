@@ -1,3 +1,5 @@
 package space.geek.planner.domain.todo
 
-interface TodoRepositoryAdapter
+interface TodoRepositoryAdapter {
+    fun createTodo(command: TodoCreationCommand): Todo
+}
