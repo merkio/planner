@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - includeAll:
+      path: schema
+      relativeToChangelogFile: true
+  - includeAll:
+      path: user
+      relativeToChangelogFile: true
+  - includeAll:
+      path: todo
+      relativeToChangelogFile: true

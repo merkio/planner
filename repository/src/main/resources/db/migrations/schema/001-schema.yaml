@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - logicalFilePath: '001-schema'
+
+  - changeSet:
+      id: '001-1'
+      author: merkio
+      comment: 'create application schema'
+      changes:
+        - sql: CREATE SCHEMA IF NOT EXISTS planner;
