@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
+import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
 import org.testcontainers.containers.PostgreSQLContainer
@@ -17,7 +18,6 @@ import space.geek.planner.repository.user.UserRepository
 
 @SpringBootTest
 @Testcontainers
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 internal class RepositoryTestBase {
 
     @Autowired
@@ -53,7 +53,6 @@ internal class RepositoryTestBase {
             registry.add("spring.datasource.url", container::getJdbcUrl)
             registry.add("spring.datasource.username", container::getUsername)
             registry.add("spring.datasource.password", container::getPassword)
-            registry.add("spring.sql.init.mode") { "always" }
 
             // Liquibase properties
             registry.add("spring.liquibase.enabled") { "true" }
