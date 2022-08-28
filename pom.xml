@@ -9,6 +9,7 @@
         <module>deployment</module>
         <module>application</module>
         <module>api</module>
+        <module>ui</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
