@@ -31,7 +31,7 @@
         <sonar.coverage.jacoco.xmlReportPaths>
             deployment/target/site/jacoco-aggregate/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
-        <archunit.version>1.0.0-rc1</archunit.version>
+        <archunit.version>1.0.1</archunit.version>
         <kotlin-logging.version>2.1.23</kotlin-logging.version>
         <app.version>${project.version}</app.version>
         <mockk.version>1.12.7</mockk.version>
